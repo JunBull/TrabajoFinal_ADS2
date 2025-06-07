@@ -1,35 +1,27 @@
-package com.TrabajoFinal_ADS2.modelo;
+package com.TrabajoFinal_ADS2.dto;
 
-import jakarta.persistence.*;
+import com.TrabajoFinal_ADS2.modelo.Proveedor;
 
-@Entity
-@Table(name = "producto")
-public class Producto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductoDTO {
     private Long id_Producto;
 
-    @Column(nullable = false)
     private String nombre_Producto;
 
-    @Column(nullable = false)
     private double precioPorKilo_Producto;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_Proveedor", referencedColumnName = "id_Proveedor")
     private Proveedor proveedor;
 
-    public Producto() {
+    public ProductoDTO() {
     }
 
-    public Producto(Long id_Producto, String nombre_Producto, double precioPorKilo_Producto, Proveedor proveedor) {
+    public ProductoDTO(Long id_Producto, String nombre_Producto, double precioPorKilo_Producto, Proveedor proveedor) {
         this.id_Producto = id_Producto;
         this.nombre_Producto = nombre_Producto;
         this.precioPorKilo_Producto = precioPorKilo_Producto;
         this.proveedor = proveedor;
     }
 
-    public Producto(String nombre_Producto, double precioPorKilo_Producto, Proveedor proveedor) {
+    public ProductoDTO(String nombre_Producto, double precioPorKilo_Producto, Proveedor proveedor) {
         this.nombre_Producto = nombre_Producto;
         this.precioPorKilo_Producto = precioPorKilo_Producto;
         this.proveedor = proveedor;

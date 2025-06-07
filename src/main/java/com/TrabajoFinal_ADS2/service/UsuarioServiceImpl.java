@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 
-
     private final UsuarioRepository usuarioRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -25,7 +24,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public void guardarUsuario(UsuarioRegistroDTO registroDTO) {
-        Usuario usuario = new Usuario(registroDTO.getNombre(),
+        Usuario usuario = new Usuario(
+                registroDTO.getNombre(),
                 registroDTO.getApellido(),
                 registroDTO.getEmail(),
                 passwordEncoder.encode(registroDTO.getPassword()),

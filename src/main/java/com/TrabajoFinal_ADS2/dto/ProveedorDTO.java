@@ -1,34 +1,24 @@
-package com.TrabajoFinal_ADS2.modelo;
+package com.TrabajoFinal_ADS2.dto;
 
-import jakarta.persistence.*;
+import com.TrabajoFinal_ADS2.modelo.Usuario;
 
-@Entity
-@Table(name = "proveedor")
-public class Proveedor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProveedorDTO {
     private Long id_Proveedor;
 
-    @Column(nullable = false)
     private String nombre_Proveedor;
 
-    @Column(nullable = false)
     private String apellido_Proveedor;
 
-    @Column(nullable = false)
     private String ubicacion_Proveedor;
 
-    @Column(nullable = false)
     private String estado_Proveedor;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
-    public Proveedor() {
+    public ProveedorDTO() {
     }
 
-    public Proveedor(Long id_Proveedor, String nombre_Proveedor, String apellido_Proveedor, String ubicacion_Proveedor, String estado_Proveedor, Usuario usuario) {
+    public ProveedorDTO(Long id_Proveedor, String nombre_Proveedor, String apellido_Proveedor, String ubicacion_Proveedor, String estado_Proveedor, Usuario usuario) {
         this.id_Proveedor = id_Proveedor;
         this.nombre_Proveedor = nombre_Proveedor;
         this.apellido_Proveedor = apellido_Proveedor;
@@ -37,7 +27,7 @@ public class Proveedor {
         this.usuario = usuario;
     }
 
-    public Proveedor(String nombre_Proveedor, String apellido_Proveedor, String ubicacion_Proveedor, String estado_Proveedor,Usuario usuario) {
+    public ProveedorDTO(String nombre_Proveedor, String apellido_Proveedor, String ubicacion_Proveedor, String estado_Proveedor,Usuario usuario) {
         this.nombre_Proveedor = nombre_Proveedor;
         this.apellido_Proveedor = apellido_Proveedor;
         this.ubicacion_Proveedor = ubicacion_Proveedor;
