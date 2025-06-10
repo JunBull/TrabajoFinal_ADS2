@@ -16,12 +16,13 @@ public class PedidoService {
         Pedido pedido = new Pedido(
                 pedidoDTO.getFecha_Pedido(),
                 pedidoDTO.getCantidad_Pedido(),
-                pedidoDTO.getmontoTotal_Pedido(),
+                pedidoDTO.getMontoTotal_Pedido(),
                 pedidoDTO.getVendedor(),
                 pedidoDTO.getCliente(),
                 pedidoDTO.getSupervisorDeVenta(),
                 pedidoDTO.getFechaAprobacion_Pedido(),
-                pedidoDTO.getTipoVariedad()
+                pedidoDTO.getTipoVariedad(),
+                pedidoDTO.getPlanta()
         );
         pedidoRepository.save(pedido);
     }

@@ -20,29 +20,33 @@ public class Pedido {
     @Column(nullable = false)
     private double montoTotal_Pedido;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Vendedor", referencedColumnName = "id_Vendedor")
     private Vendedor vendedor;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Cliente", referencedColumnName = "id_Cliente")
     private Cliente cliente;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_SupervisorDeVenta", referencedColumnName = "id_SupervisorDeVenta")
     private SupervisorDeVenta supervisorDeVenta;
 
     @Column(nullable = true)
     private Date fechaAprobacion_Pedido;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_TipoVariedad", referencedColumnName = "id_TipoVariedad")
     private TipoVariedad tipoVariedad;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_Planta", referencedColumnName = "id_Planta")
+    private Planta planta;
 
     public Pedido() {
     }
 
-    public Pedido(Long id_Pedido, Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad) {
+    public Pedido(Long id_Pedido, Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.id_Pedido = id_Pedido;
         this.fecha_Pedido = fecha_Pedido;
         this.cantidad_Pedido = cantidad_Pedido;
@@ -52,9 +56,10 @@ public class Pedido {
         this.supervisorDeVenta = supervisorDeVenta;
         this.fechaAprobacion_Pedido = fechaAprobacion_Pedido;
         this.tipoVariedad = tipoVariedad;
+        this.planta = planta;
     }
 
-    public Pedido(Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad) {
+    public Pedido(Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.fecha_Pedido = fecha_Pedido;
         this.cantidad_Pedido = cantidad_Pedido;
         this.montoTotal_Pedido = montoTotal_Pedido;
@@ -63,6 +68,7 @@ public class Pedido {
         this.supervisorDeVenta = supervisorDeVenta;
         this.fechaAprobacion_Pedido = fechaAprobacion_Pedido;
         this.tipoVariedad = tipoVariedad;
+        this.planta = planta;
     }
 
     public Long getId_Pedido() {
@@ -87,14 +93,6 @@ public class Pedido {
 
     public void setCantidad_Pedido(int cantidad_Pedido) {
         this.cantidad_Pedido = cantidad_Pedido;
-    }
-
-    public double getmontoTotal_Pedido() {
-        return montoTotal_Pedido;
-    }
-
-    public void setmontoTotal_Pedido(double montoTotal_Pedido) {
-        this.montoTotal_Pedido = montoTotal_Pedido;
     }
 
     public Vendedor getVendedor() {
@@ -135,5 +133,21 @@ public class Pedido {
 
     public void setTipoVariedad(TipoVariedad tipoVariedad) {
         this.tipoVariedad = tipoVariedad;
+    }
+
+    public double getMontoTotal_Pedido() {
+        return montoTotal_Pedido;
+    }
+
+    public void setMontoTotal_Pedido(double montoTotal_Pedido) {
+        this.montoTotal_Pedido = montoTotal_Pedido;
+    }
+
+    public Planta getPlanta() {
+        return planta;
+    }
+
+    public void setPlanta(Planta planta) {
+        this.planta = planta;
     }
 }

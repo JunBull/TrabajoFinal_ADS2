@@ -1,13 +1,6 @@
 package com.TrabajoFinal_ADS2.dto;
 
-import com.TrabajoFinal_ADS2.modelo.Cliente;
-import com.TrabajoFinal_ADS2.modelo.SupervisorDeVenta;
-import com.TrabajoFinal_ADS2.modelo.TipoVariedad;
-import com.TrabajoFinal_ADS2.modelo.Vendedor;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import com.TrabajoFinal_ADS2.modelo.*;
 
 import java.util.Date;
 
@@ -22,11 +15,12 @@ public class PedidoDTO {
     private SupervisorDeVenta supervisorDeVenta;
     private Date fechaAprobacion_Pedido;
     private TipoVariedad tipoVariedad;
+    private Planta planta;
 
     public PedidoDTO() {
     }
 
-    public PedidoDTO(Long id_Pedido, Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad) {
+    public PedidoDTO(Long id_Pedido, Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.id_Pedido = id_Pedido;
         this.fecha_Pedido = fecha_Pedido;
         this.cantidad_Pedido = cantidad_Pedido;
@@ -36,9 +30,10 @@ public class PedidoDTO {
         this.supervisorDeVenta = supervisorDeVenta;
         this.fechaAprobacion_Pedido = fechaAprobacion_Pedido;
         this.tipoVariedad = tipoVariedad;
+        this.planta = planta;
     }
 
-    public PedidoDTO(Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad) {
+    public PedidoDTO(Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.fecha_Pedido = fecha_Pedido;
         this.cantidad_Pedido = cantidad_Pedido;
         this.montoTotal_Pedido = montoTotal_Pedido;
@@ -47,6 +42,7 @@ public class PedidoDTO {
         this.supervisorDeVenta = supervisorDeVenta;
         this.fechaAprobacion_Pedido = fechaAprobacion_Pedido;
         this.tipoVariedad = tipoVariedad;
+        this.planta = planta;
     }
 
     public Long getId_Pedido() {
@@ -71,14 +67,6 @@ public class PedidoDTO {
 
     public void setCantidad_Pedido(int cantidad_Pedido) {
         this.cantidad_Pedido = cantidad_Pedido;
-    }
-
-    public double getmontoTotal_Pedido() {
-        return montoTotal_Pedido;
-    }
-
-    public void setmontoTotal_Pedido(double montoTotal_Pedido) {
-        this.montoTotal_Pedido = montoTotal_Pedido;
     }
 
     public Vendedor getVendedor() {
@@ -119,5 +107,21 @@ public class PedidoDTO {
 
     public void setTipoVariedad(TipoVariedad tipoVariedad) {
         this.tipoVariedad = tipoVariedad;
+    }
+
+    public double getMontoTotal_Pedido() {
+        return montoTotal_Pedido;
+    }
+
+    public void setMontoTotal_Pedido(double montoTotal_Pedido) {
+        this.montoTotal_Pedido = montoTotal_Pedido;
+    }
+
+    public Planta getPlanta() {
+        return planta;
+    }
+
+    public void setPlanta(Planta planta) {
+        this.planta = planta;
     }
 }

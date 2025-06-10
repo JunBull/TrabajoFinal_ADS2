@@ -15,7 +15,7 @@ public class Producto {
     @Column(nullable = false)
     private double precioPorKilo_Producto;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Proveedor", referencedColumnName = "id_Proveedor")
     private Proveedor proveedor;
 
