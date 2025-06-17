@@ -8,6 +8,7 @@ public class PedidoDTO {
 
     private Long id_Pedido;
     private Date fecha_Pedido;
+    private Producto producto;
     private int cantidad_Pedido;
     private double montoTotal_Pedido;
     private Vendedor vendedor;
@@ -20,9 +21,19 @@ public class PedidoDTO {
     public PedidoDTO() {
     }
 
-    public PedidoDTO(Long id_Pedido, Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
+    public PedidoDTO(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente) {
+        this.fecha_Pedido = fecha_Pedido;
+        this.producto = producto;
+        this.cantidad_Pedido = cantidad_Pedido;
+        this.montoTotal_Pedido = montoTotal_Pedido;
+        this.vendedor = vendedor;
+        this.cliente = cliente;
+    }
+
+    public PedidoDTO(Long id_Pedido, Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.id_Pedido = id_Pedido;
         this.fecha_Pedido = fecha_Pedido;
+        this.producto = producto;
         this.cantidad_Pedido = cantidad_Pedido;
         this.montoTotal_Pedido = montoTotal_Pedido;
         this.vendedor = vendedor;
@@ -33,8 +44,9 @@ public class PedidoDTO {
         this.planta = planta;
     }
 
-    public PedidoDTO(Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
+    public PedidoDTO(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.fecha_Pedido = fecha_Pedido;
+        this.producto = producto;
         this.cantidad_Pedido = cantidad_Pedido;
         this.montoTotal_Pedido = montoTotal_Pedido;
         this.vendedor = vendedor;
@@ -59,6 +71,14 @@ public class PedidoDTO {
 
     public void setFecha_Pedido(Date fecha_Pedido) {
         this.fecha_Pedido = fecha_Pedido;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad_Pedido() {

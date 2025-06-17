@@ -11,13 +11,14 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_Pedido;
 
-    @Column(nullable = false)
     private Date fecha_Pedido;
 
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_Producto", referencedColumnName = "id_Producto")
+    private Producto producto;
+
     private int cantidad_Pedido;
 
-    @Column(nullable = false)
     private double montoTotal_Pedido;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -32,7 +33,6 @@ public class Pedido {
     @JoinColumn(name = "id_SupervisorDeVenta", referencedColumnName = "id_SupervisorDeVenta")
     private SupervisorDeVenta supervisorDeVenta;
 
-    @Column(nullable = true)
     private Date fechaAprobacion_Pedido;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -46,9 +46,10 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Long id_Pedido, Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
+    public Pedido(Long id_Pedido, Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.id_Pedido = id_Pedido;
         this.fecha_Pedido = fecha_Pedido;
+        this.producto = producto;
         this.cantidad_Pedido = cantidad_Pedido;
         this.montoTotal_Pedido = montoTotal_Pedido;
         this.vendedor = vendedor;
@@ -59,8 +60,9 @@ public class Pedido {
         this.planta = planta;
     }
 
-    public Pedido(Date fecha_Pedido, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
+    public Pedido(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.fecha_Pedido = fecha_Pedido;
+        this.producto = producto;
         this.cantidad_Pedido = cantidad_Pedido;
         this.montoTotal_Pedido = montoTotal_Pedido;
         this.vendedor = vendedor;
@@ -85,6 +87,14 @@ public class Pedido {
 
     public void setFecha_Pedido(Date fecha_Pedido) {
         this.fecha_Pedido = fecha_Pedido;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad_Pedido() {

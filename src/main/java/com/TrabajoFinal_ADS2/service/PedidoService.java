@@ -12,17 +12,18 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    public void guardarPedido(PedidoDTO pedidoDTO){
+    public void guardarPedido1(PedidoDTO pedidoDTO){
         Pedido pedido = new Pedido(
                 pedidoDTO.getFecha_Pedido(),
+                pedidoDTO.getProducto(),
                 pedidoDTO.getCantidad_Pedido(),
                 pedidoDTO.getMontoTotal_Pedido(),
                 pedidoDTO.getVendedor(),
                 pedidoDTO.getCliente(),
-                pedidoDTO.getSupervisorDeVenta(),
-                pedidoDTO.getFechaAprobacion_Pedido(),
-                pedidoDTO.getTipoVariedad(),
-                pedidoDTO.getPlanta()
+               null,
+                null,
+                null,
+                null
         );
         pedidoRepository.save(pedido);
     }

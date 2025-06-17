@@ -40,6 +40,6 @@ public class RegistroController {
     @PostMapping
     public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO usuarioRegistroDTO){
         usuarioService.guardarUsuario(usuarioRegistroDTO);
-        return "redirect:/home";
+        return "redirect:/registro?exito";
     }
 }

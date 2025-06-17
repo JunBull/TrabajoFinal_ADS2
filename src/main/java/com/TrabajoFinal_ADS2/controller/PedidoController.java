@@ -1,8 +1,14 @@
 package com.TrabajoFinal_ADS2.controller;
 
 import com.TrabajoFinal_ADS2.dto.PedidoDTO;
+import com.TrabajoFinal_ADS2.modelo.Cliente;
 import com.TrabajoFinal_ADS2.modelo.Pedido;
+import com.TrabajoFinal_ADS2.modelo.Producto;
+import com.TrabajoFinal_ADS2.modelo.Vendedor;
+import com.TrabajoFinal_ADS2.repository.ClienteRepository;
 import com.TrabajoFinal_ADS2.repository.PedidoRepository;
+import com.TrabajoFinal_ADS2.repository.ProductoRepository;
+import com.TrabajoFinal_ADS2.repository.VendedorRepository;
 import com.TrabajoFinal_ADS2.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,23 +26,34 @@ public class PedidoController {
     private PedidoService pedidoService;
 
     @Autowired
-    private PedidoRepository pedidoRepository;
+    private ProductoRepository productoRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
+    @Autowired
+    private VendedorRepository vendedorRepository;
+
 
     @ModelAttribute("pedido")
     public PedidoDTO retornarNuevoPedidoDTO(){
         return new PedidoDTO();
     }
 
-    @GetMapping("/registroNuevoPedido")
+    @GetMapping("/home/registroNuevoPedido")
     public String mostrarFormularioDeRegistro(Model model){
-        List<Pedido> pedidos = pedidoRepository.findAll();
-        model.addAttribute("pedidos", pedidos);
+        List<Producto> productos = productoRepository.findAll();
+        List<Cliente> clientes = clienteRepository.findAll();
+        List<Vendedor> vendedores = vendedorRepository.findAll();
+        model.addAttribute("productos", productos);
+        model.addAttribute("clientes", clientes);
+        model.addAttribute("vendedores", vendedores);
         return "registroNuevoPedido";
     }
 
-    @PostMapping("/registroNuevoPedido")
+    @PostMapping("/home/registroNuevoPedido")
     public String registrarNuevoPedido(@ModelAttribute("pedido") PedidoDTO PedidoDTO){
-        pedidoService.guardarPedido(PedidoDTO);
-        return "redirect:/registroNuevoPedido?exito";
+        pedidoService.guardarPedido1(PedidoDTO);
+        return "redirect:/home/registroNuevoPedido?exito";
     }
 }

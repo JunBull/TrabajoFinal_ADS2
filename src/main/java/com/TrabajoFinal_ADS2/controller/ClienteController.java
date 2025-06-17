@@ -31,16 +31,16 @@ public class ClienteController {
         return new ClienteDTO();
     }
 
-    @GetMapping("/home_vendedor/registroNuevoCliente")
+    @GetMapping("/home/registroNuevoCliente")
     public String mostrarFormularioDeRegistro(Model model){
         List<Cliente> clientes = clienteRepository.findAll();
         model.addAttribute("clientes", clientes);
         return "registroNuevoCliente";
     }
 
-    @PostMapping("/registroNuevoCliente")
+    @PostMapping("/home/registroNuevoCliente")
     public String registrarNuevoCliente(@ModelAttribute("cliente") ClienteDTO clienteDTO){
         clienteService.guardarCliente(clienteDTO);
-        return "redirect:/registroNuevoCliente?exito";
+        return "redirect:/home/registroNuevoCliente?exito";
     }
 }
