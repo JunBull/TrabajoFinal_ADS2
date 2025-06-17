@@ -60,7 +60,7 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/registro","/registro?exito", "/js/**", "/css/**", "/img/**").permitAll()
+                        .requestMatchers("/registro","/registro?exito", "/js/**", "/css/**", "/static/imagenes/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

@@ -1,0 +1,154 @@
+/* Estilo general para los contenedores de las opciones de navegación */
+.nav-item-box {
+    display: inline-block;
+    margin-right: 10px; /* Espaciado entre las opciones */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que el header esté por encima de otros contenidos */
+}
+
+body {
+  padding-top: 80px; /* Ajusta el valor según la altura de tu header */
+}
+
+/* Estilo para los enlaces dentro de los divs */
+.navbar-nav .nav-item-box .nav-link {
+  color: #489e58; /* Verde oscuro */
+  font-weight: bold;
+  padding: 5px 15px; /* Un poco de padding para las cajas */
+  border-radius: 5px; /* Bordes redondeados */
+  text-decoration: none; /* Elimina subrayado */
+  font-size: 16px;
+}
+
+/* Efecto hover: cambiar el color a un verde más claro cuando el cursor pasa por encima */
+.navbar-nav .nav-item-box .nav-link:hover {
+    color: #66bb6a; /* Verde más claro */
+}
+
+/* Estilo para la sección "Quiénes Somos" */
+.quienes-somos {
+  background-image: url('/imagenes/plantacion_home.webp'); /* Ruta a la imagen de fondo */
+  background-size: cover; /* Asegura que la imagen cubra toda la sección */
+  background-position: center; /* Centra la imagen */
+  height: 500px; /* Ajusta la altura de la sección */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+/* Añadir un filtro oscuro sobre la imagen para mejorar el contraste */
+.quienes-somos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Filtro oscuro */
+  z-index: 1;
+}
+
+/* Estilo para el texto dentro de la sección */
+.quienes-somos .container {
+  z-index: 2; /* Asegura que el texto esté por encima del filtro */
+}
+
+/* Clase personalizada para centrar el texto dentro del contenedor de saludo */
+.saludo-container {
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center;     /* Centra el texto verticalmente */
+    height: 120px;           /* Ajusta la altura del contenedor, puede ser mayor o menor */
+    text-align: center;      /* Centra el texto dentro del contenedor */
+}
+
+/* Estilos para el texto de bienvenida */
+.welcome-text {
+    color: #489e58; /* Establece el color verde del texto */
+    font-size: 32px;   /* Ajusta el tamaño de la fuente si es necesario */
+    margin: 0; /* Elimina cualquier margen extra */
+}
+
+/* Estilo para la sección "Qué ofrecemos" */
+.ofrecemos {
+  background-color: #f5f5f5; /* Fondo suave para la sección */
+  padding: 50px 0;
+}
+
+/* Estilo del título */
+.section-title {
+  color: #388e3c; /* Verde oscuro */
+  font-size: 2rem;  /* Ajustar el tamaño de la fuente */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Ajuste para las tarjetas de Misión y Visión */
+.card-body {
+  padding: 30px;
+  background-color: #ffffff; /* Fondo blanco para cada caja */
+  border-radius: 10px;
+}
+
+/* Estilo para los títulos de las cajas (Misión y Visión) */
+.card-title {
+  font-weight: bold;
+  color: #388e3c;
+  font-size: 1.5rem; /* Tamaño de fuente ajustable */
+}
+
+/* Ajuste para los íconos dentro de las cajas */
+.icon {
+  width: 50px; /* Tamaño del ícono */
+  height: auto;
+}
+
+/* Estilo de las tarjetas */
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Asegurarse de que las tarjetas ocupen toda la altura de la columna */
+.card.h-100 {
+  height: 100%;
+}
+
+/* Estilo de la imagen */
+.img-fluid {
+  max-height: 100%; /* Asegura que la imagen no se desborde */
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+
+/* Alineación de la fila de texto e imagen */
+.row.align-items-center {
+  display: flex;
+  justify-content: space-between; /* Hace que el texto esté a la izquierda y la imagen a la derecha */
+  align-items: center; /* Centra verticalmente el contenido */
+}
+
+/* Responsividad: ajustar el tamaño en pantallas pequeñas */
+@media (max-width: 768px) {
+  .ofrecemos .row {
+    flex-direction: column-reverse; /* Hace que la imagen se muestre debajo del texto en pantallas pequeñas */
+  }
+
+  /* Ajustar tamaño de las tarjetas en pantallas pequeñas */
+  .card-body {
+    padding: 20px;
+  }
+
+  /* Asegurar que el texto y las imágenes se ajusten en pantallas pequeñas */
+  .section-title {
+    font-size: 1.5rem; /* Ajustar tamaño de fuente */
+  }
+}

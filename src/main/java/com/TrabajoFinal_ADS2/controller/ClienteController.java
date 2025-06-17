@@ -31,7 +31,7 @@ public class ClienteController {
         return new ClienteDTO();
     }
 
-    @GetMapping("/registroNuevoCliente")
+    @GetMapping("/home_vendedor/registroNuevoCliente")
     public String mostrarFormularioDeRegistro(Model model){
         List<Cliente> clientes = clienteRepository.findAll();
         model.addAttribute("clientes", clientes);

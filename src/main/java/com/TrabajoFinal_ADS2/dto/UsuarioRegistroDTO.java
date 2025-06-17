@@ -1,11 +1,14 @@
 package com.TrabajoFinal_ADS2.dto;
 
+import com.TrabajoFinal_ADS2.modelo.Rol;
+
 public class UsuarioRegistroDTO {
     private Long id;
     private String nombre;
     private String apellido;
     private String email;
     private String password;
+    private Rol rol;
 
     public Long getId() {
         return id;
@@ -47,19 +50,29 @@ public class UsuarioRegistroDTO {
         this.password = password;
     }
 
-    public UsuarioRegistroDTO(Long id, String nombre, String apellido, String email, String password) {
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public UsuarioRegistroDTO(Long id, String nombre, String apellido, String email, String password, Rol rol) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
+        this.rol = rol;
     }
 
-    public UsuarioRegistroDTO(String nombre, String apellido, String email, String password) {
+    public UsuarioRegistroDTO(String nombre, String apellido, String email, String password, Rol rol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.password = password;
+        this.rol = rol;
     }
 
     public UsuarioRegistroDTO(String email) {

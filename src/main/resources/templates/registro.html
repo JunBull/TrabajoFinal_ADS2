@@ -23,6 +23,7 @@
                       </li>
                   </ul>
               </div>
+
           </div>
       </nav>
 
@@ -62,9 +63,19 @@
                       </div>
 
                       <div class="mb-3">
+                          <label for="rol" class="form-label">Seleccionar Rol:</label>
+                          <select id="rol" class="form-control" th:field="*{rol.id}" required>
+                              <option value="" disabled selected>Selecciona un Rol</option>
+                              <!-- Recorremos la lista de roles -->
+                              <option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
+                          </select>
+                      </div>
+
+                      <div class="mb-3">
                           <button type="submit" class="btn btn-success">Registrar</button>
                           <span>Si estás registrado <a th:href="@{/login}">inicia sesión aquí</a></span>
                       </div>
+
                   </form>
               </div>
           </div>
