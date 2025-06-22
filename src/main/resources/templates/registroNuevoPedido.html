@@ -29,11 +29,11 @@
           <label for="producto" class="form-label">Seleccionar Producto:</label>
           <select id="producto" class="form-control" th:field="*{producto.id_Producto}" required>
             <option value="" disabled selected>Selecciona un Producto</option>
-            <!-- Recorremos la lista de productos -->
+
             <option th:each="producto : ${productos}" th:value="${producto.id_Producto}" th:text="${producto.nombre_Producto}"></option>
           </select>
         </div>
-        
+
         <div class="mb-3">
           <label for="cantidadPedido" class="form-label">Cantidad producto(por contenedor):</label>
           <input id="cantidadPedido" type="number" class="form-control" th:field="*{cantidad_Pedido}" required>
@@ -43,19 +43,27 @@
           <label for="vendedor" class="form-label">Seleccionar Vendedor:</label>
           <select id="vendedor" class="form-control" th:field="*{vendedor.id_Vendedor}" required>
             <option value="" disabled selected>Selecciona un Vendedor</option>
-            <!-- Recorremos la lista de vendedores -->
-            <option th:each="vendedor : ${vendedores}" th:value="${vendedor.id_Vendedor}" th:text="${vendedor.nombre_Vendedor} ${vendedor.apellido_Vendedor}"></option>
+
+            <option th:each="vendedor : ${vendedores}" th:value="${vendedor.id_Vendedor}" th:text="${vendedor.nombre_Vendedor}"></option>
           </select>
         </div>
+
 
         <div class="mb-3">
           <label for="cliente" class="form-label">Seleccionar Cliente:</label>
           <select id="cliente" class="form-control" th:field="*{cliente.id_Cliente}" required>
             <option value="" disabled selected>Selecciona un Cliente</option>
-            <!-- Recorremos la lista de clientes -->
-            <option th:each="cliente : ${clientes}" th:value="${clientes.id_Cliente}" th:text="${cliente.nombre_Cliente} ${cliente.apellido_Cliente}"></option>
+
+            <option th:each="cliente : ${clientes}" th:value="${cliente.id_Cliente}" th:text="${cliente.nombre_Cliente}"></option>
           </select>
         </div>
+
+        <!-- Campos invisibles para enviar null si no se seleccionan -->
+        <input type="hidden" th:field="*{montoTotal_Pedido}" value="null">
+        <input type="hidden" th:field="*{supervisorDeVenta}" value="null">
+        <input type="hidden" th:field="*{fechaAprobacion_Pedido}" value="null">
+        <input type="hidden" th:field="*{tipoVariedad}" value="null">
+        <input type="hidden" th:field="*{planta}" value="null">
 
         <div class="mb-3">
           <button type="submit" class="btn btn-success">Registrar Producto</button>

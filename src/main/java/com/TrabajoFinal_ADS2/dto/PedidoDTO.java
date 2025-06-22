@@ -19,6 +19,7 @@ public class PedidoDTO {
     private Planta planta;
 
     public PedidoDTO() {
+
     }
 
     public PedidoDTO(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente) {

@@ -46,6 +46,15 @@ public class Pedido {
     public Pedido() {
     }
 
+    public Pedido(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente) {
+        this.fecha_Pedido = fecha_Pedido;
+        this.producto = producto;
+        this.cantidad_Pedido = cantidad_Pedido;
+        this.montoTotal_Pedido = montoTotal_Pedido;
+        this.vendedor = vendedor;
+        this.cliente = cliente;
+    }
+
     public Pedido(Long id_Pedido, Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.id_Pedido = id_Pedido;
         this.fecha_Pedido = fecha_Pedido;
