@@ -35,5 +35,5 @@ public class Application {
 					new Rol("ROL_PROVEEDOR"));
 		};
 	}
- */
+*/
 }
