@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Pedido</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="bg-white shadow-sm py-3">
+  <div class="container d-flex justify-content-between align-items-center">
+    <!-- Logo -->
+    <div class="logo">
+      <a th:href=@{/home} class="d-block">
+        <img th:src="@{/imagenes/logo.webp}" alt="Global Lehem" style="max-width: 220px;">
+      </a>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <div class="nav-item-box">
+            <a class="nav-link" th:href=@{/home/generarReporte}>Generar Reportes</a>
+          </div>
+          <div class="nav-item-box">
+            <a class="nav-link" th:href=@{/home/listarPedidosPendientes}>Visualizar pedidos pendientes</a>
+          </div>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <h1>Editar Pedido Pendiente</h1>
+  <form th:action="@{/home/editarPedidoPendientes/{id}(id=${pedido1.id_Pedido})}" method="post" th:object="${pedido}">
+
+    <div class="mb-3">
+      <!--
+      <label for="fechaPedido" class="form-label" >Fecha:</label>
+      -->
+      <input id="fechaPedido" type="date" class="form-control" th:field="*{fecha_Pedido}" style="display:none">
+    </div>
+
+    <div class="mb-3">
+      <!--
+      <label for="producto" class="form-label">Seleccionar Producto:</label>
+      -->
+      <select id="producto" class="form-control" th:field="*{idProducto}" style="display:none">
+        <option value="" disabled selected>Selecciona un Producto</option>
+
+        <option th:each="producto : ${productos}" th:value="${producto.id_Producto}" th:text="${producto.nombre_Producto}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <!--
+      <label for="cantidadPedido" class="form-label">Cantidad producto(por contenedor):</label>
+      -->
+      <input id="cantidadPedido" type="number" class="form-control" th:field="*{cantidad_Pedido}" style="display:none">
+    </div>
+
+    <div class="mb-3">
+      <!--
+      <label for="montoTotalPedido" class="form-label">Monto Total:</label>
+      -->
+      <input id="montoTotalPedido" type="number" class="form-control" th:field="*{montoTotal_Pedido}" style="display:none">
+    </div>
+
+
+    <div class="mb-3">
+      <!--
+      <label for="vendedor" class="form-label">Seleccionar Vendedor:</label>
+      -->
+      <select id="vendedor" class="form-control" th:field="*{idVendedor}" style="display:none">
+        <option value="" disabled selected>Selecciona un Vendedor</option>
+
+        <option th:each="vendedor : ${vendedores}" th:value="${vendedor.id_Vendedor}" th:text="${vendedor.nombre_Vendedor}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <!--
+      <label  for="cliente" class="form-label">Seleccionar Cliente:</label>
+      -->
+      <select id="cliente" class="form-control" th:field="*{idCliente}" style="display:none">
+        <option value="" disabled selected>Selecciona un Cliente</option>
+
+        <option th:each="cliente : ${clientes}" th:value="${cliente.id_Cliente}" th:text="${cliente.nombre_Cliente}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+
+      <label for="supervisorDeVenta" class="form-label">Seleccionar Supervisor de Venta:</label>
+      <select id="supervisorDeVenta" class="form-control" th:field="*{idSupervisorDeVenta}">
+        <option value="" disabled selected>Selecciona un Supervisor de Venta</option>
+
+        <option th:each="supervisorDeVenta : ${supervisorDeVentas}" th:value="${supervisorDeVenta.id_SupervisorDeVenta}" th:text="${supervisorDeVenta.nombre_SupervisorDeVenta}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="fechaAprobacionPedido" class="form-label">Fecha Aprobacion Pedido:</label>
+      <input id="fechaAprobacionPedido" type="date" class="form-control" th:field="*{fechaAprobacion_Pedido}">
+    </div>
+
+    <div class="mb-3">
+      <label for="tipoVariedad" class="form-label">Seleccionar Tipo Variedad:</label>
+      <select id="tipoVariedad" class="form-control" th:field="*{idTipoVariedad}">
+        <option value="" disabled selected>Selecciona un Tipo Variedad</option>
+
+        <option th:each="tipoVariedad : ${tipoVariedades}" th:value="${tipoVariedad.id_TipoVariedad}" th:text="${tipoVariedad.nombre_TipoVariedad}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="planta" class="form-label">Seleccionar Planta:</label>
+      <select id="planta" class="form-control" th:field="*{idPlanta}">
+        <option value="" disabled selected>Selecciona una Planta</option>
+
+        <option th:each="planta : ${plantas}" th:value="${planta.id_Planta}" th:text="${planta.ubicacion_Planta}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-success">Actualizar Pedido Pendiente</button>
+    </div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

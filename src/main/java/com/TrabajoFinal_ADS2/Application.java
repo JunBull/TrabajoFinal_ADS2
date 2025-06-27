@@ -1,7 +1,11 @@
 package com.TrabajoFinal_ADS2;
 
+import com.TrabajoFinal_ADS2.repository.*;
+import com.TrabajoFinal_ADS2.modelo.Pedido;
 import com.TrabajoFinal_ADS2.modelo.Rol;
+import com.TrabajoFinal_ADS2.modelo.TipoVariedad;
 import com.TrabajoFinal_ADS2.repository.RolRepository;
+import com.TrabajoFinal_ADS2.repository.TipoVariedadRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +19,9 @@ public class Application {
 	}
 /*
 	@Bean
-	CommandLineRunner commandLineRunner(RolRepository rolRepository){
+	CommandLineRunner commandLineRunner(RolRepository rolRepository, TipoVariedadRepository tipoVariedadRepository){
 		return args ->{
+			//Roles
 			rolRepository.save(
 					new Rol("ROL_VENDEDOR"));
 			rolRepository.save(
@@ -33,6 +38,10 @@ public class Application {
 					new Rol("ROL_SUPERVISOR_DE_LOGISTICA"));
 			rolRepository.save(
 					new Rol("ROL_PROVEEDOR"));
+			//TipoVariedad
+			tipoVariedadRepository.save(new TipoVariedad("k1"));
+			tipoVariedadRepository.save(new TipoVariedad("k2"));
+			tipoVariedadRepository.save(new TipoVariedad("k3"));
 		};
 	}
 */

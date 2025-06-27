@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Pedidos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="bg-white shadow-sm py-3">
+  <div class="container d-flex justify-content-between align-items-center">
+    <!-- Logo -->
+    <div class="logo">
+      <a th:href=@{/home} class="d-block">
+        <img th:src="@{/imagenes/logo.webp}" alt="Global Lehem" style="max-width: 220px;">
+      </a>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <div class="nav-item-box">
+            <a class="nav-link" th:href=@{/home/generarReporte}>Generar Reportes</a>
+          </div>
+          <div class="nav-item-box">
+            <a class="nav-link" th:href=@{/home/listarPedidosPendientes}>Visualizar pedidos pendientes</a>
+          </div>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <h1>Listado de Pedidos</h1>
+  <form th:action="@{/home/listarPedidosPorCliente}" method="get" class="row g-3 mb-4">
+    <div class="col-auto">
+      <label for="clienteSelect" class="form-label">Filtrar por Cliente:</label>
+      <select id="clienteSelect" name="idCliente" class="form-select">
+        <option value="" disabled selected>Selecciona un cliente</option>
+        <option th:each="cliente : ${clientes}" th:value="${cliente.id_Cliente}" th:text="${cliente.nombre_Cliente}"></option>
+      </select>
+    </div>
+    <div class="col-auto align-self-end">
+      <button type="submit" class="btn btn-info">Filtrar</button>
+    </div>
+  </form>
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Fecha de Pedido</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Monto Total</th>
+      <th>Vendedor</th>
+      <th>Cliente</th>
+      <th>Supervisor de Venta</th>
+      <th>Fecha Aprobación</th>
+      <th>Tipo Variedad</th>
+      <th>Planta</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Itera sobre la lista de pedidos y muestra los datos -->
+    <tr th:each="pedido : ${pedidos}">
+      <td th:text="${pedido.id_Pedido}"></td>
+      <td th:text="${pedido.fecha_Pedido}"></td>
+      <td th:text="${pedido.producto.nombre_Producto}"></td>
+      <td th:text="${pedido.cantidad_Pedido}"></td>
+      <td th:text="${pedido.montoTotal_Pedido}"></td>
+      <td th:text="${pedido.vendedor.nombre_Vendedor}"></td>
+      <td th:text="${pedido.cliente.nombre_Cliente}"></td>
+      <td th:text="${pedido.supervisorDeVenta != null ? pedido.supervisorDeVenta.nombre_SupervisorDeVenta : 'Sin Aprobar'}"></td>
+      <td th:text="${pedido.fechaAprobacion_Pedido != null ? pedido.fechaAprobacion_Pedido : 'Sin Aprobar'}"></td>
+      <td th:text="${pedido.tipoVariedad != null ? pedido.tipoVariedad.nombre_TipoVariedad : 'Sin Aprobar'}"></td>
+      <td th:text="${pedido.planta != null ? pedido.planta.ubicacion_Planta : 'Sin Aprobar'}"></td>
+      <td>
+        <!-- Aquí puedes agregar botones para editar o eliminar -->
+        <a th:href="@{'/home/editarPedidoPendientes/' + ${pedido.id_Pedido}}" class="btn btn-primary btn-sm" th:if="${pedido.supervisorDeVenta == null and pedido.fechaAprobacion_Pedido == null and pedido.tipoVariedad == null and pedido.planta == null}">Editar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

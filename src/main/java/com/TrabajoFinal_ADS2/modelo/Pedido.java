@@ -2,6 +2,7 @@ package com.TrabajoFinal_ADS2.modelo;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,7 +12,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_Pedido;
 
-    private Date fecha_Pedido;
+    private LocalDate fecha_Pedido;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Producto", referencedColumnName = "id_Producto")
@@ -33,7 +34,7 @@ public class Pedido {
     @JoinColumn(name = "id_SupervisorDeVenta", referencedColumnName = "id_SupervisorDeVenta")
     private SupervisorDeVenta supervisorDeVenta;
 
-    private Date fechaAprobacion_Pedido;
+    private LocalDate fechaAprobacion_Pedido;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_TipoVariedad", referencedColumnName = "id_TipoVariedad")
@@ -46,7 +47,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente) {
+    public Pedido(LocalDate fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente) {
         this.fecha_Pedido = fecha_Pedido;
         this.producto = producto;
         this.cantidad_Pedido = cantidad_Pedido;
@@ -55,7 +56,7 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public Pedido(Long id_Pedido, Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
+    public Pedido(Long id_Pedido, LocalDate fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, LocalDate fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.id_Pedido = id_Pedido;
         this.fecha_Pedido = fecha_Pedido;
         this.producto = producto;
@@ -69,7 +70,7 @@ public class Pedido {
         this.planta = planta;
     }
 
-    public Pedido(Date fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, Date fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
+    public Pedido(LocalDate fecha_Pedido, Producto producto, int cantidad_Pedido, double montoTotal_Pedido, Vendedor vendedor, Cliente cliente, SupervisorDeVenta supervisorDeVenta, LocalDate fechaAprobacion_Pedido, TipoVariedad tipoVariedad, Planta planta) {
         this.fecha_Pedido = fecha_Pedido;
         this.producto = producto;
         this.cantidad_Pedido = cantidad_Pedido;
@@ -90,11 +91,11 @@ public class Pedido {
         this.id_Pedido = id_Pedido;
     }
 
-    public Date getFecha_Pedido() {
+    public LocalDate getFecha_Pedido() {
         return fecha_Pedido;
     }
 
-    public void setFecha_Pedido(Date fecha_Pedido) {
+    public void setFecha_Pedido(LocalDate fecha_Pedido) {
         this.fecha_Pedido = fecha_Pedido;
     }
 
@@ -138,11 +139,11 @@ public class Pedido {
         this.supervisorDeVenta = supervisorDeVenta;
     }
 
-    public Date getFechaAprobacion_Pedido() {
+    public LocalDate getFechaAprobacion_Pedido() {
         return fechaAprobacion_Pedido;
     }
 
-    public void setFechaAprobacion_Pedido(Date fechaAprobacion_Pedido) {
+    public void setFechaAprobacion_Pedido(LocalDate fechaAprobacion_Pedido) {
         this.fechaAprobacion_Pedido = fechaAprobacion_Pedido;
     }
 
